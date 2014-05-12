@@ -1,0 +1,84 @@
+<!doctype html>
+<html ng-app="myApp" style="background-image: url('../wallpapers/2.jpg')"> 
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>AngularJS Meetup Berlin - Debugging in AngularJS</title>
+        <meta name="description" content="">
+        <link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/font-awesome.css">
+        <link rel="stylesheet" href="../css/main.css">
+    </head>
+    <body>
+
+        <img class="berlinMeetupLogo" src="../imgs/AngularJS-Berlin.png"></img>
+
+        <a href="../index.html" class="nextElement previousElement">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1"  viewBox="0 0 10 18">
+                <path d="m9 1 l-8,8 l8,8" stroke="black" stroke-width="2" fill="transparent"/>
+            </svg>
+        </a>
+
+        <a href="../02-decorate-logservice/index.html" class="nextElement">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1"  viewBox="0 0 10 18">
+                <path d="m1 1 l8,8 l-8,8" stroke="black" stroke-width="2" fill="transparent"/>
+            </svg>
+        </a>
+        
+        <div class="container mainContainer marginTopTransition" ng-controller="ConsoleExampleCtrl">
+            <h1 class="titlePres">A few uses of the console API</h1>
+            <h3 class="dsclmrPres">Open the console and click the button.</h3>
+
+            <div ng-show="showCode == 0" style="width: 100%;"><pre><code class="language-javascript">
+console.log("This is a log using log()", objectToDebug);
+console.info("This is a log using info()", objectToDebug);
+console.error("This is a log using error()", objectToDebug);
+console.warn("This is a log using warn()", objectToDebug);
+console.debug("This is a log using debug()", objectToDebug);
+            </code></pre></div>
+
+            <div ng-show="showCode == 1" style="width: 100%;"><pre><code class="language-javascript">
+var groupName = "Advanced methods";
+console.group(groupName);
+console.assert(!groupName, groupName);
+console.time(groupName);
+console.log("Let's regroup our log calls");
+console.dir(objectToDebug);
+console.dir(objectToDebug);
+console.table(arrayToDebug);
+console.timeEnd(groupName);
+console.groupEnd(groupName);
+console.dir(console);
+            </code></pre></div>
+
+            <div ng-show="showCode == 2" style="width: 100%;"><pre><code class="language-javascript">
+monitorEvents(document.body, 'click');
+            </code></pre></div>
+
+            <button class="btn btn-info basicAPIbtns" ng-click="consoleDispatcher()" ng-bind="btnActionLabel"></button>
+            <button class="btn btn-primary basicAPIbtns basicAPInextBtn" ng-click="showNextDemo()">Next Demo</button>
+            <button class="btn btn-primary basicAPIbtns basicAPIpreviousBtn" ng-click="showPreviousDemo()">Previous Demo</button>
+        </div>
+
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/prism.js"></script>
+        <script src="../js/angular.min.js"></script>
+        <script src="app.js"></script>
+        <script>
+            var calculatePosition = function() {
+                var contentHeight = $('.mainContainer').height();
+                $('.mainContainer').css('margin-top', -contentHeight/2 - 50);
+            };
+
+            $(document).ready(function() {
+                calculatePosition();
+            });
+
+            $(window).resize(function() {
+                calculatePosition();
+            });
+
+        </script>
+    </body>
+</html>

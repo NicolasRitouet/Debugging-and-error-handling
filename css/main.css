@@ -1,0 +1,272 @@
+body, html
+{
+    height: 100%;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+html{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300; 
+    min-width: 815px;
+}
+
+body 
+{
+    background: transparent;
+}
+
+p, div, a, h1, h2, h3, h4
+{
+    display: table;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.berlinMeetupLogo
+{
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    width: 10%;
+}
+
+.nextElement
+{
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    width: 80px;
+    height: 80px;
+    border-radius: 120px;
+    margin-top: -60px;
+    background: rgba(255,255,255,0.95);
+    cursor: pointer;
+    display: block;
+}
+
+.previousElement
+{
+    left: 40px;
+    right: auto;
+}
+
+.nextElement > svg
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -15px;
+    margin-left: -7px;
+    width: 15px;
+    height: 30px;
+}
+
+.nextElement > div
+{
+    font-size: 30px;
+}
+
+.marginTopTransition
+{
+    transition : margin-top 0.4s;
+}
+
+.mainContainer
+{
+    position: relative;
+    top: 50%;
+    display: table;
+    width: auto;
+    max-width: 50%;
+    margin: 0 auto;
+    padding: 50px;
+    background: rgba(255,255,255,0.95);
+}
+
+.titlePres
+{
+    text-align: center;
+    margin-bottom: 30px;
+    color: rgb(22, 160, 133);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    word-spacing: 10px;
+    font-weight: 900;
+}
+
+.dsclmrPres
+{
+    margin: 0 auto;
+    margin-bottom: 30px;
+    font-weight: 200;
+}
+
+.authorPres
+{
+    margin: 0 auto;
+}
+
+.authorPres > a
+{
+    color: black;
+    font-family: 'journalregular';
+    font-size: 40px;
+    text-decoration: underline;
+}
+
+/***************************************************/
+/***************** BASIC API PART ******************/
+/***************************************************/
+
+.basicAPIbtns
+{
+    margin-top: 10px;
+}
+
+.basicAPInextBtn
+{
+    float: right;
+}
+
+.basicAPIpreviousBtn {
+    float: right;
+    margin-right: 10px
+}
+
+
+/* http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: black;
+    text-shadow: 0 1px white;
+    font-family: Consolas, Monaco, 'Andale Mono', monospace;
+    direction: ltr;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+    text-shadow: none;
+    background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+    text-shadow: none;
+    background: #b3d4fc;
+}
+
+@media print {
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+    background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+    padding: .1em;
+    border-radius: .3em;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: slategray;
+}
+
+.token.punctuation {
+    color: #999;
+}
+
+.namespace {
+    opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol {
+    color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.builtin {
+    color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+    color: #a67f59;
+    background: hsla(0,0%,100%,.5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #07a;
+}
+
+
+.token.regex,
+.token.important {
+    color: #e90;
+}
+
+.token.important {
+    font-weight: bold;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+@font-face {
+    font-family: 'journalregular';
+    src: url('journal-webfont.eot');
+    src: url('journal-webfont.eot?#iefix') format('embedded-opentype'),
+         url('journal-webfont.woff') format('woff'),
+         url('journal-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}

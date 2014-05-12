@@ -1,0 +1,58 @@
+
+<!doctype html>
+<html style="background-image: url('./wallpapers/21.jpg')">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>AngularJS Meetup Berlin - Debugging in AngularJS</title>
+        <link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,600,700,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="./css/font-awesome.css">
+        <link rel="stylesheet" href="./css/main.css">
+    </head>
+    <body>
+        <img class="berlinMeetupLogo" src="./imgs/AngularJS-Berlin.png"></img>
+
+        <div class="container mainContainer">
+            <h1 class="titlePres">Debugging and Error Handling with AngularJS</h1>
+            <h3 class="dsclmrPres">AngularJS Meetup Berlin - 14 may 2014</h3>
+            <p class="authorPres"><a href="http://github.com/nicolasritouet">Nicolas Ritouet</a></p>
+        </div>
+
+        <a href="./01-consoleAPI/index.html" class="nextElement">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1"  viewBox="0 0 10 18">
+                <path d="m1 1 l8,8 l-8,8" stroke="black" stroke-width="2" fill="transparent"/>
+            </svg>
+        </a>
+
+        <script src="./js/jquery.min.js"></script>
+
+        <script>
+            $('#changeWallpaper').click(function() {
+                var wallpaperNewURL = "url('./wallpapers/" + (parseInt($(this).attr('attr-bg')) + 1) + ".jpg')";
+                $(this).attr('attr-bg', (parseInt($(this).attr('attr-bg')) + 1));
+                $('html').css('background-image', wallpaperNewURL);
+            });
+
+            var calculatePosition = function() {
+                var contentHeight = $('.mainContainer').height();
+                $('.mainContainer').css('margin-top', -contentHeight/2 - 50);
+            };
+
+            $(document).ready(function() {
+                calculatePosition();
+                window.setTimeout(function() {
+                    $('.mainContainer').addClass('marginTopTransition');
+                }, 0);
+            });
+
+            $(window).resize(function() {
+                calculatePosition();
+            });
+
+        </script>
+  
+    </body>
+</html>

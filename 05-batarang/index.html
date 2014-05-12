@@ -1,0 +1,65 @@
+<!doctype html>
+<html ng-app="myApp" style="background-image: url('../wallpapers/4.jpg')">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Berlin AngularJS Meetup - Debugging in AngularJS</title>
+        <meta name="description" content="">
+        <link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/font-awesome.css">
+        <link rel="stylesheet" href="../css/main.css">
+    </head>
+    <body>
+        
+        <img class="berlinMeetupLogo" src="../imgs/AngularJS-Berlin.png"></img>
+        <a href="../04-breakpoints/index.html" class="nextElement previousElement">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1"  viewBox="0 0 10 18">
+                <path d="m9 1 l-8,8 l8,8" stroke="black" stroke-width="2" fill="transparent"/>
+            </svg>
+        </a>
+
+        <a href="../06-debugging-async/index.html" class="nextElement">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1"  viewBox="0 0 10 18">
+                <path d="m1 1 l8,8 l-8,8" stroke="black" stroke-width="2" fill="transparent"/>
+            </svg>
+        </a>
+        
+        <div class="container mainContainer marginTopTransition" ng-controller="LogExampleCtrl">
+            <h1 class="titlePres">Debugging with Batarang</h1>
+            <h3 class="dsclmrPres">Open the console and click the button.</h3>
+            <ul>
+                <li>Models - Scopes</li>
+                <li>Performance</li>
+                <li>Dependencies</li>
+            </ul>
+
+
+            <button class="btn btn-info basicAPIbtns" ng-click="execute()">Call a function</button>
+        </div>
+
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/prism.js"></script>
+        <script src="../js/angular.min.js"></script>
+        <script src="app.js"></script>
+        <script>
+            var calculatePosition = function() {
+                var contentHeight = $('.mainContainer').height();
+                $('.mainContainer').css('margin-top', -contentHeight/2 - 50);
+            };
+
+            $(document).ready(function() {
+                calculatePosition();
+            });
+
+            $(window).resize(function() {
+                calculatePosition();
+            });
+
+        </script>
+
+
+  
+    </body>
+</html>
