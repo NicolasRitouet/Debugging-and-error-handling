@@ -74,11 +74,11 @@ angular.module('myApp', [])
     }
 
     $scope.consoleLevels = function() {
-        console.log("This is a log using log()", objectToDebug);
-        console.info("This is a log using info()", objectToDebug);
-        console.error("This is a log using error()", objectToDebug);
-        console.warn("This is a log using warn()", objectToDebug);
-        console.debug("This is a log using debug()", objectToDebug);
+        console.log("This is a log using log()", objectToDebug, arrayToDebug);
+        console.info("This is a log using info()", objectToDebug, arrayToDebug);
+        console.error("This is a log using error()", objectToDebug, arrayToDebug);
+        console.warn("This is a log using warn()", objectToDebug, arrayToDebug);
+        console.debug("This is a log using debug()", objectToDebug, arrayToDebug);
     }
 
     $scope.consoleAdvanced = function() {

@@ -28,14 +28,13 @@
         
         <div class="container mainContainer marginTopTransition" ng-controller="ConsoleExampleCtrl">
             <h1 class="titlePres">A few uses of the console API</h1>
-            <h3 class="dsclmrPres">Open the console and click the button.</h3>
 
             <div ng-show="showCode == 0" style="width: 100%;"><pre><code class="language-javascript">
-console.log("This is a log using log()", objectToDebug);
-console.info("This is a log using info()", objectToDebug);
-console.error("This is a log using error()", objectToDebug);
-console.warn("This is a log using warn()", objectToDebug);
-console.debug("This is a log using debug()", objectToDebug);
+console.log("This is a log using log()", objectToDebug, arrayToDebug);
+console.info("This is a log using info()", objectToDebug, arrayToDebug);
+console.error("This is a log using error()", objectToDebug, arrayToDebug);
+console.warn("This is a log using warn()", objectToDebug, arrayToDebug);
+console.debug("This is a log using debug()", objectToDebug, arrayToDebug);
             </code></pre></div>
 
             <div ng-show="showCode == 1" style="width: 100%;"><pre><code class="language-javascript">
