@@ -1,6 +1,26 @@
 'use strict';
 
 angular.module('myApp', [])
+.config(function($provide) {
+  $provide.decorator("$exceptionHandler", function($delegate, $window, $injector) {
+    return function(exception, cause) {
+
+      // keep the original logic
+      $delegate(exception, cause);
+
+      var data = {
+        message: exception.stack || exception.message || exception || '',
+        cause: cause || '',
+        errorUrl: $window.location.href,
+        clientSideDate: new Date().getTime()
+      }
+
+      // Bypassing angular's http abstraction to avoid Circular dependency error
+      $injector.get('$httpBackend')('POST', '/errors', angular.toJson(data),
+        angular.noop, { 'content-type': 'application/json' });
+    };
+  });
+})
 .controller('LogExampleCtrl', function($scope, $log) {
     
     var objectToDebug = {
@@ -23,7 +43,7 @@ angular.module('myApp', [])
             city: 'Paris'
         }
     ];
-    $scope.execute = function() {
-        console.debug("This is a log using info()", objectToDebug);
+    $scope.throwException = function() {
+        throw new Error("An error has occured")
     }
 });

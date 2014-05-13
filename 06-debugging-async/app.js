@@ -1,29 +1,34 @@
 'use strict';
 
+
 angular.module('myApp', [])
-.controller('LogExampleCtrl', function($scope, $log) {
-    
-    var objectToDebug = {
-        name: 'This is an object',
-        id: 2,
-        child: {
-            subname: 'the child !'
+.controller('LogExampleCtrl', function($scope, $log, $http) {
+
+    var maxRetry = 3;
+    $scope.retries = 0;
+    $scope.execute = function() {
+        $scope.retries = 0;
+        $scope.status = 'fa-spinner fa-spin';
+        makeAjaxCall();
+    }
+
+    function successAjaxCall(response) {
+        $scope.result = response.data.productItems.productItem[0];
+        $log.log($scope.result);
+        $scope.status = 'fa-thumbs-o-up';
+    }
+
+    function errorAjaxCall(err) {
+        if (maxRetry > $scope.retries) {
+            setTimeout(makeAjaxCall, 2000);
+        } else {
+            $scope.status = 'fa-exclamation-triangle';
         }
     }
-    var arrayToDebug = [
-        {
-            firstName: 'John',
-            lastName: 'Doe',
-            age: 33
-        },
-        {
-            firstName: 'Pierre',
-            lastName: 'Dupont',
-            age: 42,
-            city: 'Paris'
-        }
-    ];
-    $scope.execute = function() {
-        console.debug("This is a log using info()", objectToDebug);
+
+    function makeAjaxCall() {
+        $scope.retries++;
+        $http.jsonp('http://api.zandsdox.com/json/2011-03-01/products?connectid=43EEF0445509C7205827&items=1&q=angularJs&partnership=all&callback=JSON_CALLBACK')
+            .then(successAjaxCall, errorAjaxCall);
     }
 });

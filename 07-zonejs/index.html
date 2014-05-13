@@ -27,20 +27,39 @@
         
         <div class="container mainContainer marginTopTransition" ng-controller="LogExampleCtrl">
             <h1 class="titlePres">Zone.js</h1>
-            <h3 class="dsclmrPres">Open the console and click the button.</h3>
+
+            <div style="width: 100%;"><pre><code class="language-javascript">
+function main () {
+  b1.addEventListener('click', bindSecondButton);
+}
+
+function bindSecondButton () {
+  b2.addEventListener('click', throwError);
+}
 
 
-            <button class="btn btn-info basicAPIbtns" id="b1">Bind Error</button>
+function throwError () {
+  throw new Error('aw shucks');
+}
+
+/*
+ * Bootstrap the app
+ */
+zone.fork(Zone.longStackTraceZone).run(main);
+      </code></pre></div>
+
+            <button class="btn btn-info basicAPIbtns" id="b1">Bind Error</button>   
             <button class="btn btn-info basicAPIbtns" id="b2">Cause Error</button>
         </div>
 
 
         <script src="../js/jquery.min.js"></script>
+        <script src="../js/prism.js"></script>
         <script src="../js/zone.js"></script>
         <script src="../js/long-stack-trace-zone.js"></script>
 
       <script>
-
+      // Example taken from Brian Ford: https://github.com/btford/zone.js/blob/master/example/basic.html
       /*
        * This is a simple example of async stack traces with zones
        */
@@ -72,6 +91,11 @@
        */
       //main();
       zone.fork(Zone.longStackTraceZone).run(main);
+
+
+
+
+
 
       var calculatePosition = function() {
           var contentHeight = $('.mainContainer').height();

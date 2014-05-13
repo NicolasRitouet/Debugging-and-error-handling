@@ -19,21 +19,43 @@
             </svg>
         </a>
 
-        <a href="../10-decorate/index.html" class="nextElement">
+        <a href="../09-diaryjs/index.html" class="nextElement">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1"  viewBox="0 0 10 18">
                 <path d="m1 1 l8,8 l-8,8" stroke="black" stroke-width="2" fill="transparent"/>
             </svg>
         </a>
         
         <div class="container mainContainer marginTopTransition" ng-controller="LogExampleCtrl">
-            <h1 class="titlePres">The $exceptionHandler service</h1>
-            <h3 class="dsclmrPres">Open the console and click the button.</h3>
+            <h1 class="titlePres">Decorate the $exceptionHandler service</h1>
+<div style="width: 100%;"><pre><code class="language-javascript">
+app.config(function($provide) {
+  $provide.decorator("$exceptionHandler", function($delegate, $window) {
+    return function(exception, cause) {
 
+      // keep the original logic
+      $delegate(exception, cause);
+
+      var data = {
+        message: exception.stack || exception.message || exception || '',
+        cause: cause || '',
+        errorUrl: $window.location.href,
+        clientSideDate: new Date().getTime()
+      }
+      // Bypassing angular's http abstraction to avoid infinite exception loops
+      $http('POST', '/errors', angular.toJson(data),
+        angular.noop, { 'content-type': 'application/json' });
+    };
+  });
+})
+    </code></pre></div>
             <button class="btn btn-info basicAPIbtns" ng-click="throwException()">Throw exception</button>
         </div>
 
 
         <script src="../js/jquery.min.js"></script>
+        <script src="../js/prism.js"></script>
+        <script src="../js/angular.js"></script>
+        <script src="app.js"></script>
 
       <script>
           var calculatePosition = function() {

@@ -29,19 +29,19 @@
         <div class="container mainContainer marginTopTransition" ng-controller="LogExampleCtrl">
             <h1 class="titlePres">Breakpoints</h1>
             <ul>
-                <li>Simple breakpoints</li>
-                <li>Conditional breakpoints</li>
-                <li>Breakpoint on change event</li>
-                <li>Breakpoint on DOM change</li>
+                <li ng-repeat="item in breakpointList">{{item}}</li>
             </ul>
 
 
-            <button class="btn btn-info basicAPIbtns" ng-click="execute()">Call a function</button>
+            <button class="btn btn-info basicAPIbtns" ng-click="execute()">Call a function</button>   
+            <button class="btn btn-info basicAPIbtns" ng-click="addItem()">Add item</button>   
+            <button class="btn btn-info basicAPIbtns" ng-click="ajaxCall()">Make an ajax call</button>
+            <div ng-if="result"><strong>Response</strong>: {{result.name}}</div>
         </div>
 
         <script src="../js/jquery.min.js"></script>
         <script src="../js/prism.js"></script>
-        <script src="../js/angular.min.js"></script>
+        <script src="../js/angular.js"></script>
         <script src="app.js"></script>
         <script>
             var calculatePosition = function() {

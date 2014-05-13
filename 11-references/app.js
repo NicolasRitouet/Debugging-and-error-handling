@@ -3,14 +3,14 @@
 angular.module('myApp', [])
 .controller('LogExampleCtrl', function($scope, $log) {
     
-    $scope.objectToDebug = {
+    var objectToDebug = {
         name: 'This is an object',
         id: 2,
         child: {
             subname: 'the child !'
         }
     }
-    $scope.arrayToDebug = [
+    var arrayToDebug = [
         {
             firstName: 'John',
             lastName: 'Doe',
@@ -24,6 +24,6 @@ angular.module('myApp', [])
         }
     ];
     $scope.execute = function() {
-        console.debug("This is a log using info()", $scope.objectToDebug);
+        console.debug("This is a log using info()", objectToDebug);
     }
 });
