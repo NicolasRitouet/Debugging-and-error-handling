@@ -29,16 +29,20 @@
             <h1 class="titlePres">Zone.js</h1>
             
             <div style="width: 100%;"><pre><code class="language-javascript">
-function main () {
+function main() {
   b1.addEventListener('click', bindSecondButton);
 }
 
-function bindSecondButton () {
-  b2.addEventListener('click', throwError);
+function bindSecondButton() {
+  b2.addEventListener('click', asyncThrowError);
+}
+
+function asyncThrowError() {
+  setTimeout(throwError, 1000);
 }
 
 
-function throwError () {
+function throwError() {
   throw new Error('aw shucks');
 }
 
@@ -77,8 +81,12 @@ zone.fork(Zone.longStackTraceZone).run(main);
        * Think of how much more productive your debugging could be!
        */
 
-      function bindSecondButton () {
-        b2.addEventListener('click', throwError);
+      function bindSecondButton() {
+        b2.addEventListener('click', asyncThrowError);
+      }
+
+      function asyncThrowError() {
+        setTimeout(throwError, 1000);
       }
 
 

@@ -33,6 +33,7 @@ app.config(function($provide) {
     return function(exception, cause) {
 
       // keep the original logic
+      
       $delegate(exception, cause);
 
       var data = {
@@ -42,6 +43,7 @@ app.config(function($provide) {
         clientSideDate: new Date().getTime()
       }
       // Bypassing angular's http abstraction to avoid infinite exception loops
+
       $http('POST', '/errors', angular.toJson(data),
         angular.noop, { 'content-type': 'application/json' });
     };

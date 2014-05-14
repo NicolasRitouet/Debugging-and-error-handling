@@ -34,9 +34,11 @@
 app.controller('LogExampleCtrl', function($scope, $log) {
 
     // Set the instance of the logger
+
     $log = $log.getInstance("LogExampleCtrl");
 
     // Try the enhanced $log service
+    
     $log.log("Enter controller");
 
     $scope.executeLog = function() {

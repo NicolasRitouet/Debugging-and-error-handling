@@ -29,11 +29,44 @@
             <h1 class="titlePres">Debugging Async calls</h1>
 
 
+            <div style="width: 100%;"><pre><code class="language-javascript">
+
+    var maxRetry = 3;
+    $scope.retries = 0;
+    $scope.execute = function() {
+        $scope.retries = 0;
+        $scope.status = 'fa-spinner fa-spin';
+        makeAjaxCall();
+    }
+
+    function successAjaxCall(response) {
+        $scope.result = response.data;
+        $scope.status = 'fa-thumbs-o-up';
+    }
+
+    function errorAjaxCall(err) {
+        if (maxRetry > $scope.retries) {
+            setTimeout(makeAjaxCall, 2000);
+        } else {
+            $scope.status = 'fa-exclamation-triangle';
+        }
+    }
+
+    function makeAjaxCall() {
+        $scope.retries++;
+        $http.jsonp('nonworkingApiUrl')
+            .then(successAjaxCall, errorAjaxCall);
+    }
+
+            </code></pre></div>
+
+
             <button class="btn btn-info basicAPIbtns" ng-click="execute()">Submit data<span ng-if="status">  <i class="fa {{status}}"></i></span><span ng-if="retries > 0"> - Attempt #{{retries}}</span></button>
         </div>
 
         <script src="../js/jquery.js"></script>
         <script src="../js/angular.js"></script>
+        <script src="../js/prism.js"></script>
         <script src="app.js"></script>
         <script>
             var calculatePosition = function() {
