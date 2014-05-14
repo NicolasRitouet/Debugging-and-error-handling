@@ -30,9 +30,12 @@
             <h1 class="titlePres">Debugging with Batarang</h1>
             <h3 class="dsclmrPres">Open the console and click the button.</h3>
             <ul>
-                <li>Models - Scopes</li>
-                <li>Performance</li>
-                <li>Dependencies</li>
+                <li ng-repeat="item in itemList">
+                    <span ng-switch="!!item.link">
+                        <a ng-href="{{item.link}}" ng-switch-when="true" target=_blank>{{item.name}}</a>
+                        <span ng-switch-when="false">{{item.name}}</span>
+                    </span>
+                </li>
             </ul>
 
 

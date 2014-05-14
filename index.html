@@ -30,11 +30,6 @@
         <script src="./js/jquery.min.js"></script>
 
         <script>
-            $('#changeWallpaper').click(function() {
-                var wallpaperNewURL = "url('./wallpapers/" + (parseInt($(this).attr('attr-bg')) + 1) + ".jpg')";
-                $(this).attr('attr-bg', (parseInt($(this).attr('attr-bg')) + 1));
-                $('html').css('background-image', wallpaperNewURL);
-            });
 
             var calculatePosition = function() {
                 var contentHeight = $('.mainContainer').height();

@@ -23,6 +23,18 @@ angular.module('myApp', [])
             city: 'Paris'
         }
     ];
+
+    $scope.itemList = [
+        {
+            name: 'Models - Scopes'
+        },
+        {
+            name:'Performance',
+            link: '../imgs/batarang-perf.png'
+        }, {
+            name: 'Dependencies',
+            link: '../imgs/batarang-deps.png'
+        }];
     $scope.execute = function() {
         console.debug("This is a log using info()", $scope.objectToDebug);
     }

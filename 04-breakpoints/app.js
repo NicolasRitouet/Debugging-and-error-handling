@@ -31,15 +31,7 @@ angular.module('myApp', [])
     }
 
     $scope.addItem = function() {
-        $scope.breakpointList.push('XHR Breakpoint');
-    }
-
-    $scope.ajaxCall = function() {
-        $http.jsonp('http://api.zanox.com/json/2011-03-01/products?connectid=43EEF0445509C7205827&items=1&q=angularJs&partnership=all&callback=JSON_CALLBACK')
-            .then(function(response) {
-                $scope.result = response.data.productItems.productItem[0];
-                $log.log($scope.result);
-            });
+        $('#listToWatch').append("<li>DOM changed !</li>");
     }
 
     function logCaller() {
