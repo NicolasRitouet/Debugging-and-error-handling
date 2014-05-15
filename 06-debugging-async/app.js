@@ -28,7 +28,7 @@ angular.module('myApp', [])
 
     function makeAjaxCall() {
         $scope.retries++;
-        $http.jsonp('http://api.zandsdox.com/json/2011-03-01/products?connectid=43EEF0445509C7205827&items=1&q=angularJs&partnership=all&callback=JSON_CALLBACK')
+        $http.jsonp('http://api.zanox.com/json/2011-03-01/products?connectid=43EEF0445509C7205827&items=1&q=angularJs&partnership=all&callback=JSON_CALLBACK')
             .then(successAjaxCall, errorAjaxCall);
     }
 });
